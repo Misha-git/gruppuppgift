@@ -20,4 +20,5 @@
         echo "Error!" .  $e->getMessage() . "<br />"; //skriver ut felet och stänger ner appen. 
         die;
     }
+
 ?>

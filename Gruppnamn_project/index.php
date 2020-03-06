@@ -19,6 +19,7 @@
 <?php 
 
 include("views/header.php");
+include("handlers/pages.php");
 
 ?>
 
@@ -30,6 +31,7 @@ include("views/header.php");
         if($_SESSION['role'] == "admin") {
             echo "<h1>Du är admin!</h1>";
             echo "<a href='adminPage.php'>Adminpanelen</a>";
+            echo "<a href='views/blogg.php'>Skapa inlägg!</a>";
         } else {
             echo "<h1>Du är inte admin</h1>";
         }
@@ -37,7 +39,6 @@ include("views/header.php");
         echo '<a href="handlers/logout.php">Logga ut!</a>';
     
     } else {
-        include('views/loginForm.php');
         echo '<a href="views/signUpForm.php">Registrera!</a>';  
     }
 ?>

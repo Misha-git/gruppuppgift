@@ -10,13 +10,18 @@
 
 <h1> Logga in! </h1>
 
-<form method="POST" action="./handlers/login.php"> <!-- Fungerar som den ska-->
-    Användarnamn: <br />
+<form method="POST" action="../handlers/login.php"> <!-- Fungerar som den ska-->
+    <b>Användarnamn:</b> <br />
     <input type="text" name="username"/> <br />
-    Lösenord: <br />
+    <b>Lösenord:</b> <br />
     <input type="password" name="password" /> <br />
     <input type="submit" value="Logga in" />
+
 </form>
-    
+
+<hr />
+
+    <b>Inte medlem?</b><br /> 
+    <a href="../views/signUpForm.php">Registrera dig!</a>
 </body>
 </html>
