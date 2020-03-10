@@ -44,6 +44,8 @@ echo "<input type=\"submit\" name=\"Uppdatera\" />";
 
 $sql ="UPDATE posts SET title=". $data['title'] . " WHERE id=:id";
 
+
+
 ?> 
 <?php 
 /*
