@@ -50,7 +50,17 @@
         }
 ?>
 
+
+
 <?php 
+    } else if ($_GET['action'] == "edit") {
+        $query ="UPDATE posts SET title=". $_POST['title'] . " WHERE id=:id";
+    
+        $sth =  $dbh->prepare($query); //statement handler
+        $sth->bindParam(':title', $title); //BindParam sätter :name till variabel. PDO-funktion.
+        //$sth->bindParam(':description', $description);
+    
+        $return = $sth->execute();
     } else {
 ?>
 

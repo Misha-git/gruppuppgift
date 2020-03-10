@@ -11,8 +11,6 @@
 </head>
 <body>
 
-
-
 <div class="row">
 
 <!------------------Här skriver man blogg-inlägg--------------------------->
@@ -26,10 +24,6 @@
     </form> 
 
 
-</div>
-
-<div class="footer">
-  <h2>Footer</h2>
 </div>
     
 </body>

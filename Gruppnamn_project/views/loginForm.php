@@ -19,6 +19,11 @@
 
 </form>
 
+<?php
+session_start();
+echo (isset($_GET['err']) && $_GET['err'] == true ? "Något gick fel" : "" );
+?>
+
 <hr />
 
     <b>Inte medlem?</b><br /> 

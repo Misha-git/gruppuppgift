@@ -16,33 +16,51 @@ $id     = (isset($_GET['id']) ? $_GET['id'] : -1);
     $return = $sth->execute();
 
     header("location:../index.php");
-        } 
-
-    else if ($action == "edit") {
-        $sql ="UPDATE posts SET title='$data['title']' WHERE id=:id";
+    } 
 
 
-echo "<h2>Editera inlägg #$id!</h2>";
 
-$query = "SELECT id, title, description FROM posts WHERE id=:id LIMIT 1";
-$sth = $dbh->prepare($query);
-$sth->bindParam(':id', $id);
-$return = $sth->execute();
+    echo "<h2>Editera inlägg #$id!</h2>";
 
-if (!$return) {
-    print_r($dbh->errorInfo());
-    die;
-}
+    $query = "SELECT id, title, description FROM posts WHERE id=:id LIMIT 1";
+    $sth = $dbh->prepare($query);
+    $sth->bindParam(':id', $id);
+    $return = $sth->execute();
 
-$data = $sth->fetch();
+        if (!$return) {
+        print_r($dbh->errorInfo());
+        die;
+        }
+
+        $data = $sth->fetch();
 
 //här ska vi ändra, skapa väg till action
 
-echo "<form method="POST" action="index.php?action=edit">"
-echo "<input type='text' name='title' value='". $data['title'] ."' /><br />";
-echo "<input type='text' name='description' value='". $data['description'] ."' /><br />";
-echo "<input<a href=\"./post.php?action=edit&id=" . $data['id'] . "\">Redigera 2</a>";
-}
+echo "<form method=\"POST\" action=\"post.php?action=edit&id=" . $data['id'] ."\">"; 
+echo "<input type='text' name='title' value='". $data['title'] ."' /><br />"; 
+echo "<input type='text' name='description' value='". $data['description'] ."' /><br />"; 
+echo "<input type=\"submit\" name=\"Uppdatera\" />";
+ 
 
-$sql ="UPDATE posts SET title='$data['title']' WHERE id=:id";
+$sql ="UPDATE posts SET title=". $data['title'] . " WHERE id=:id";
+
+?> 
+<?php 
+/*
+        <form method='POST' action="handlers/handlePost.php">
+        <input type='text' name='title' value=<?php $data['title']?>><br />
+        <input type='text' name='description' value='<?php $data['description']?>'> </br />
+        <a href="/post.php?action=edit&id=" <?php $data['id'] ?>>Redigera 2</a>
+    
+/*
+        $sql ="UPDATE posts SET title='$data['title']' WHERE id=:id";
+
+            if ($dbh->query($sql) == true) {
+            echo "Record updated successfully";
+            } else {
+            echo "Error updating record: " . $dbh->error;
+            }
+
+            $dbh->close(); */
+
 ?>
