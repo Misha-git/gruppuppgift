@@ -34,7 +34,6 @@ $id     = (isset($_GET['id']) ? $_GET['id'] : -1);
 
         $data = $sth->fetch();
 
-//här ska vi ändra, skapa väg till action
 
 echo "<form method=\"POST\" action=\"post.php?action=edit&id=" . $data['id'] ."\">"; 
 echo "<input type='text' name='title' value='". $data['title'] ."' /><br />"; 
@@ -43,6 +42,7 @@ echo "<input type=\"submit\" name=\"Uppdatera\" />";
  
 
 $sql ="UPDATE posts SET title=". $data['title'] . " WHERE id=:id";
+$sql ="UPDATE posts SET description=". $data['description'] . " WHERE id=:id";
 
 
 
