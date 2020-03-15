@@ -1,6 +1,6 @@
 <?php
 
-    
+    //--------------Vid log out så avslutas session---------------
     session_start();
     session_destroy();
 

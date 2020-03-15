@@ -4,7 +4,6 @@
 
 class Comments {
     private $databaseHandler;
-    private $order = "desc";
     private $comments;
 
     public function __construct($dbh) {
@@ -14,7 +13,7 @@ class Comments {
     }
 
     public function fetchAll() { //hämtar alla posts
-        $query = "SELECT id, content, posted_date FROM comments ORDER BY posted_date $this->order"; //hämtar från databasen
+        $query = "SELECT id, content, posted_date, user_id, post_id FROM comments"; //hämtar från databasen
         $return_array = $this->databaseHandler->query($query);
         $return_array = $return_array->fetchAll(PDO::FETCH_ASSOC);
         $this->comments = $return_array;
@@ -23,6 +22,7 @@ class Comments {
     public function getComments() {
         return $this->comments;
     }
+
 }
 
 

@@ -26,13 +26,15 @@ echo (isset($_GET['err']) && $_GET['err'] == true ? "Något gick fel" : "" );
     
             echo "<h1>Välkommen!</h1>";
             echo "<h1>Du är admin!</h1>";
+
             include("views/header.php");
         } else {
-        //header("location:views/userPage.php");
+
             echo "<h1>Välkommen!</h1>";
             echo "<h1>Hej " . $_SESSION['username'] . "!</h1><br />";
+
             include("views/headerUser.php");
-        }
+        } 
 
     } 
 

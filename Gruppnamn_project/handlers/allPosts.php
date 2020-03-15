@@ -1,51 +1,35 @@
-<?php 
 
-    /*include("../includes_partials/database_connection.php");
+<?php
 
-    //---------------- Lista med alla posts ---------------------
+include("classes/Posts.php");
 
-    $min_sql_query = "SELECT id, title, description, posted_date FROM posts";
-    $result = $dbh->query($min_sql_query);
-    foreach($result->fetchAll(PDO::FETCH_ASSOC) as $post) {
 
-        echo "<p>";
-        echo "<h1><a href='handlers/post.php?id={$post['id']}'>{$post['title']} | {$post['description']} | {$post['posted_date']}</a></h1>";
-        echo "</p><hr />";
+    //----------------------Alla inlägg på rad----------------
 
-    }
-    */
-
-    //-------------Om man loggar in som admin eller user så ser man olika listor------------------
-    //session_start();
     if(isset($_SESSION['username'])) {
-        if($_SESSION['role'] == "admin") { //------------Loggar in som ADMIN
-            include("views/header.php");
+        if($_SESSION['role'] == "admin") { //------------Vad man ser om man loggar in som ADMIN
 
             $min_sql_query = "SELECT id, title, description, posted_date FROM posts";
             $result = $dbh->query($min_sql_query);
             foreach($result->fetchAll(PDO::FETCH_ASSOC) as $post) {
 
             echo "<p>";
-            echo "<h1><a href='handlers/post.php?id={$post['id']}'>{$post['title']} | {$post['description']} | {$post['posted_date']}</a></h1>";
+            echo "<h1><a href='./index.php?page=post&id={$post['id']}'>{$post['title']} | {$post['description']} | {$post['posted_date']}</a></h1>";
             echo "</p><hr />";
             }
             
-        } else {                           //-------------Loggar in som USER
-            echo "<h1>Hej " . $_SESSION['username'] . "!</h1><br />";
-            include("views/headerUser.php");
-
+        } else {                           //------------- Vad man ser om man loggar in som USER
+            if($_SESSION['role'] == "user") {
+        
             $min_sql_query = "SELECT id, title, description, posted_date FROM posts";
             $result = $dbh->query($min_sql_query);
             foreach($result->fetchAll(PDO::FETCH_ASSOC) as $post) {
 
             echo "<p>";
-            echo "<h1><a href='handlers/postUser.php?id={$post['id']}'>{$post['title']} | {$post['description']} | {$post['posted_date']}</a></h1>";
+            echo "<h1><a href='./index.php?page=postUser&id={$post['id']}'>{$post['title']} | {$post['description']} | {$post['posted_date']}</a></h1>";
             echo "</p><hr />";
-            
+            }
         }
-    
     } 
 }
-    
-
 ?>
